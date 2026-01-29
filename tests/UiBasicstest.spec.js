@@ -19,7 +19,12 @@ test.only('Browser context Playwright test', async({browser})=>
     await expect(page.getByText('Incorrect username/password.')).toBeVisible();
     let textRetrieved = await page.locator('p.text-center.text-white').textContent();
     console.log(textRetrieved);
-    console.log(textRetrieved.split(" "));
+    let splitTexts = textRetrieved.split(" ");
+    console.log(splitTexts);
+    let username = splitTexts[2];
+    let password = splitTexts[5].split(")")[0];
+    console.log(username);
+    console.log(password);
 
     await page.close();
     await context.close();
